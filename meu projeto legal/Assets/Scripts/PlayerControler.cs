@@ -9,6 +9,7 @@ public class PlayerControler : MonoBehaviour
     private bool isMoving;
 
     public Vector2 input;
+    
 
     private void Update()
     {
@@ -36,7 +37,7 @@ public class PlayerControler : MonoBehaviour
 
         while((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon) 
         {
-            transform.position = Vector3.MoveTowards(transform.positon, targetPos, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
         transform.position = targetPos;
