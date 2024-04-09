@@ -9,7 +9,13 @@ public class PlayerControler : MonoBehaviour
     private bool isMoving;
 
     public Vector2 input;
-    
+
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -19,15 +25,22 @@ public class PlayerControler : MonoBehaviour
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
+           
+
+
+            
             if ( input != Vector2.zero)
             {
+            
                 var targetPos = transform.position;
                 targetPos.x += input.x; 
                 targetPos.y += input.y;
-
+                animator.SetFloat("Movex", input.x);
+                animator.SetFloat("Movey", input.y);
                 StartCoroutine(Move(targetPos));
             }
         }
+        animator.SetBool("isMoving", isMoving);
 
     }
     
